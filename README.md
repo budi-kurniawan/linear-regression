@@ -2,4 +2,9 @@
 
 ## The Code
 
+## Run the unittest
+```
+python -m unittest -v test.Test
+```
+
 ## Docker

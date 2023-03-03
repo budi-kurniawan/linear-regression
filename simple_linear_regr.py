@@ -1,5 +1,6 @@
 import numpy as np
 from simple_linear_regr_utils import generate_data, evaluate
+import joblib
 
 
 class SimpleLinearRegression:
@@ -94,3 +95,5 @@ if __name__ == "__main__":
     model.fit(X_train,y_train)
     predicted = model.predict(X_test)
     evaluate(model, X_test, y_test, predicted)
+    filename = "model.sav"
+    joblib.dump(model, open(filename, 'wb'))
