@@ -4,7 +4,7 @@
 
 ## Run the unittest
 ```
-python -m unittest -v test.Test
+python -m pytest
 ```
 
 ## Docker

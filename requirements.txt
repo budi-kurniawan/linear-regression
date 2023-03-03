@@ -3,3 +3,5 @@ sklearn
 matplotlib
 flask
 joblib
+pytest
+requests
