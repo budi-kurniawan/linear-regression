@@ -1,6 +1,6 @@
 import pytest
 import requests
-from main import app
+# from main import app
 from simple_linear_regr import SimpleLinearRegression
 
 def test_index_route():
