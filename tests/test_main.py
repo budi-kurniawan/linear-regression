@@ -1,19 +1,26 @@
 import pytest
-from main import app
 import requests
+from main import app
+from simple_linear_regr import SimpleLinearRegression
 
 def test_index_route():
-    # response = app.test_client().get('/')
+    # using app.test_client().get('/') won't work because it will create a new instance of the endpoint
     response = requests.get('http://localhost:5000')
-    print(response.text)
-    # assert response.data.decode('utf-8') == 'Testing, Flask!'
-
+    assert response.status_code == 200
+    
 
 def test_stream():
-    response = requests.post('http://localhost:5000/stream')
+    input = 100
+    headers = {"Content-type": "application/json"}
+    response = requests.post('http://localhost:5000/stream', json={"input": input},
+                             headers=headers)
+    assert response.status_code == 200
     print(response.text)
 
 def test_batch():
-    # response = app.test_client().get('/')
-    response = requests.post('http://localhost:5000/batch')
+    input = (100, 120, 140)
+    headers = {"Content-type": "application/json"}
+    response = requests.post('http://localhost:5000/batch', json={"input": input},
+                             headers=headers)
+    assert response.status_code == 200
     print(response.text)
