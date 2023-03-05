@@ -1,4 +1,4 @@
-from flask import Flask, Response, jsonify, request, make_response
+from flask import Flask, jsonify, request
 import joblib
 from simple_linear_regr import SimpleLinearRegression
 from flask import g
@@ -24,7 +24,6 @@ def stream():
     input_dict = request.get_json()
     data = input_dict["input"]
     result = model.predict(data)
-    print("stream result:", str(result))
     r = {"status": "OK", "message": "response for /stream", "result": str(result)}
     return jsonify(r)
 
@@ -33,9 +32,7 @@ def batch():
     input_dict = request.get_json()
     data = input_dict["input"]
     data = np.array(data).reshape((len(data), 1))
-    print('data:', data)
     result = model.predict(data)
-    print("batch result:", str(result))
     r = {"status": "OK", "message": "response for /stream", "result": str(result)}
     return jsonify(r)
 
