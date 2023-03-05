@@ -1,7 +1,7 @@
 import pytest
 import requests
 # from main import app
-from simple_linear_regr import SimpleLinearRegression
+# from simple_linear_regr import SimpleLinearRegression
 
 def test_index_route():
     # using app.test_client().get('/') won't work because it will create a new instance of the endpoint
