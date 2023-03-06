@@ -16,7 +16,8 @@ def load_model():
 
 @app.route("/", methods=["GET"])
 def info():
-    r = {"status": "OK", "message": "linear regression microservice"}
+    result = model.predict(100)[0]
+    r = {"status": "OK", "message": f"linear regression microservice. Model ready, x=100, y={result}"}
     return jsonify(r)
 
 @app.route("/stream", methods=["POST"])
@@ -39,4 +40,4 @@ def batch():
 
 if __name__=="__main__":
     load_model()
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
