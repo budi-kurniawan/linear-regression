@@ -7,7 +7,7 @@ WORKDIR /app
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
-COPY ./*.py .
-COPY ./model.sav .
+COPY ./*.py ./
+COPY ./model.sav ./
 
 CMD [ "python", "./main.py"]
