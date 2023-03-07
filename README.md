@@ -33,15 +33,14 @@ pip install lin2023
 ```
 
 ## Docker
-```
-Make sure an app directory has been created
-$ cd $PROJECT_DIR
-$ docker build --tag lin2023 .
-$ docker run -i -p 5000:5000 -d lin2023
-```
-
-To pull the Docker image from Docker Hub
+A Docker image named lin2023 is published to Docker Hub every time the workflow is triggered.
+To pull the Docker image, do this:
 ```
 $ docker pull budi2020/lin2023[:tagName]
-$ docker pull budi2020/lin2023:v0.0.1
+$ docker pull budi2020/lin2023:v0.0.2
+```
+
+To run the Docker image on port 5000, do the following:
+```
+$ docker run -i -p 5000:5000 -d lin2023
 ```

@@ -26,7 +26,7 @@ jobs:
 
       - name: Build the Docker image
         # run: docker build . --file Dockerfile --tag budi2020/lin2023:$(date +%s)
-        run: docker build . --file Dockerfile --tag budi2020/lin2023:v0.0.1
+        run: docker build . --file Dockerfile --tag budi2020/lin2023:v0.0.2
 
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
@@ -35,4 +35,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       
       - name: Docker Push
-        run: docker push ${{secrets.DOCKER_USER}}/lin2023:v0.0.1
+        run: docker push ${{secrets.DOCKER_USER}}/lin2023:v0.0.2
