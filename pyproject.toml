@@ -1,3 +1,7 @@
+name = lin2023
+version = 0.0.1
+author = Budi Kurniawan
+description = linear regression with CI/CD
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
