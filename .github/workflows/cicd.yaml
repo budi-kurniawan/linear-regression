@@ -24,20 +24,6 @@ jobs:
       - name: Test with pytest
         run: pytest
 
-
-      - name: Install pypa/build
-        run: |
-          pip install build --user
-      - name: Build a binary wheel and a source tarball
-        run: python -m build --sdist --wheel --outdir dist/ .
-
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
-
-
-
       - name: Build the Docker image
         # run: docker build . --file Dockerfile --tag budi2020/lin2023:$(date +%s)
         run: docker build . --file Dockerfile --tag budi2020/lin2023:v0.0.1
