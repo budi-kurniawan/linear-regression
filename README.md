@@ -24,8 +24,8 @@ python -m pytest
 ```
 
 ## Packaging the Code
-The code has been published as a PyPi package named 'lin2023'. The steps to package the code can be found on
-https://packaging.python.org/en/latest/tutorials/packaging-projects/. Packaging is not part of the workflow because PyPi does not allow duplicate files of the same package.
+The code has been published as a PyPi package named 'lin2023'. The pyproject.toml and setup.cfg files are used for this purpose. The steps to package the code can be found on
+https://packaging.python.org/en/latest/tutorials/packaging-projects/. Packaging is not part of the workflow because PyPi does not allow duplicate files of the same package. However, it is possible to publish a package as part of a Github Actions workflow. See https://packaging.python.org/en/latest/guides/publishing-package-distribution-releases-using-github-actions-ci-cd-workflows/.
 
 To install the package, run the following command:
 ```

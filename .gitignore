@@ -1,6 +1,7 @@
 sol_*.py
 __pycache__/*
 tests/__pycache__/*
+src/lin2023/__pycache__/*
 dist
 app.egg-info
 build
