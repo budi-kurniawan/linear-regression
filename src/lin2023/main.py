@@ -34,7 +34,7 @@ def batch():
     data = input_dict["input"]
     data = np.array(data).reshape((len(data), 1))
     result = model.predict(data)
-    r = {"status": "OK", "message": "response for /stream", "result": str(result)}
+    r = {"status": "OK", "message": "response for /batch", "result": str(result)}
     return jsonify(r)
 
 

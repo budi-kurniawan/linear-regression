@@ -42,5 +42,12 @@ $ docker pull budi2020/lin2023:v0.0.2
 
 To run the Docker image on port 5000, do the following:
 ```
-$ docker run -i -p 5000:5000 -d lin2023
+$ docker run -i -p 5000:5000 -d budi2020/lin2023:v0.0.2
+
 ```
+
+## Invoking the API
+Use curl in Linux:
+- curl -X GET http://ip_address:5000/
+- curl -X POST -H "Content-Type: application/json" -d '{"input":500}' http://ip_address:5000/stream
+- curl -X POST -H "Content-Type: application/json" -d '{"input":[100,200,500]}' http://localhost:5000/batch
