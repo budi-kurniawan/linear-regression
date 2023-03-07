@@ -19,41 +19,40 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # pip install flake8 pytest
           pip install -r requirements.txt
-      # - name: Lint with flake8
-      #   run: |
-      #     # stop the build if there are Python syntax errors or undefined names
-      #     flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-      #     # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-      #     flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
       - name: Test with pytest
         run: pytest
 
-      - name: Build the Docker image
-        # run: docker build . --file Dockerfile --tag budi2020/lin2023:$(date +%s)
-        run: docker build . --file Dockerfile --tag budi2020/lin2023:v0.0.1
 
-      - name: Log in to Docker Hub
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      - name: Install pypa/build
+        run: |
+          pip install build --user
+      - name: Build a binary wheel and a source tarball
+        run: python -m build --sdist --wheel --outdir dist/ .
+
+      # - name: Publish distribution to Test PyPI
+      #   uses: pypa/gh-action-pypi-publish@release/v1
+      #   with:
+      #     password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+      #     repository_url: https://test.pypi.org/legacy/
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      
+          password: ${{ secrets.PYPI_API_TOKEN }}
 
-      # - name: Extract metadata (tags, labels) for Docker
-      #   id: meta
-      #   uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-      #   with:
-      #     images: budi2020/lin2023
-      
-      # - name: Build and push Docker image
-      #   uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-      #   with:
-      #     context: .
-      #     push: true
-      #     tags: ${{ steps.meta.outputs.tags }}
-      #     labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Docker Push
-        run: docker push ${{secrets.DOCKER_USER}}/lin2023:v0.0.1
+
+
+      # - name: Build the Docker image
+      #   # run: docker build . --file Dockerfile --tag budi2020/lin2023:$(date +%s)
+      #   run: docker build . --file Dockerfile --tag budi2020/lin2023:v0.0.1
+
+      # - name: Log in to Docker Hub
+      #   uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      #   with:
+      #     username: ${{ secrets.DOCKER_USER }}
+      #     password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      # - name: Docker Push
+      #   run: docker push ${{secrets.DOCKER_USER}}/lin2023:v0.0.1
