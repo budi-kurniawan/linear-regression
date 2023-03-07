@@ -31,11 +31,6 @@ jobs:
       - name: Build a binary wheel and a source tarball
         run: python -m build --sdist --wheel --outdir dist/ .
 
-      # - name: Publish distribution to Test PyPI
-      #   uses: pypa/gh-action-pypi-publish@release/v1
-      #   with:
-      #     password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-      #     repository_url: https://test.pypi.org/legacy/
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
@@ -43,16 +38,15 @@ jobs:
 
 
 
+      - name: Build the Docker image
+        # run: docker build . --file Dockerfile --tag budi2020/lin2023:$(date +%s)
+        run: docker build . --file Dockerfile --tag budi2020/lin2023:v0.0.1
 
-      # - name: Build the Docker image
-      #   # run: docker build . --file Dockerfile --tag budi2020/lin2023:$(date +%s)
-      #   run: docker build . --file Dockerfile --tag budi2020/lin2023:v0.0.1
-
-      # - name: Log in to Docker Hub
-      #   uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-      #   with:
-      #     username: ${{ secrets.DOCKER_USER }}
-      #     password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       
-      # - name: Docker Push
-      #   run: docker push ${{secrets.DOCKER_USER}}/lin2023:v0.0.1
+      - name: Docker Push
+        run: docker push ${{secrets.DOCKER_USER}}/lin2023:v0.0.1
