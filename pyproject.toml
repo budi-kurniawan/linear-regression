@@ -1,4 +1,6 @@
 [build-system]
 requires = ["setuptools"]
-py-modules = []
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = []
