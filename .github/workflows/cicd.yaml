@@ -37,7 +37,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag budi2020/lin2023:$(date +%s)
+        # run: docker build . --file Dockerfile --tag budi2020/lin2023:$(date +%s)
+        run: docker build . --file Dockerfile --tag budi2020/lin2023
 
       # - name: Extract metadata (tags, labels) for Docker
       #   id: meta
