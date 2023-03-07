@@ -85,7 +85,7 @@ class SimpleLinearRegression:
         :return:
             y_hat: the predicted output
         """
-        #DONE calculate the predicted output y_hat. remember the function of a line is defined as y = WX + b
+        # calculate the predicted output y_hat. remember the function of a line is defined as y = WX + b
         y_hat = np.dot(X, self.W) + self.b
         return y_hat
 
