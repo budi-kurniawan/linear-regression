@@ -28,7 +28,6 @@ jobs:
         run: pytest
 
       - name: Build Docker image and push to Docker Hub
-        # run: docker build . --file Dockerfile --tag budi2020/lin2023:$(date +%s)
         run: docker build . --file Dockerfile --tag budi2020/lin2023:$VERSION
 
       - name: Log in to Docker Hub
@@ -39,26 +38,6 @@ jobs:
       
       - name: Docker Push
         run: docker push ${{secrets.DOCKER_USER}}/lin2023:$VERSION
-
-      # - name: Set up Docker Buildx and Push to ghrc.io
-      #   uses: docker/setup-buildx-action@v1
-
-      # - name: Log in to GitHub container registry
-      #   uses: docker/login-action@v1.10.0
-      #   with:
-      #     registry: ghcr.io
-      #     username: ${{ github.actor }}
-      #     password: ${{ secrets.GITHUB_TOKEN }}
-
-      # - name: Lowercase the repo name
-      #   run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
-
-      # - name: Build and push container image to registry
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     push: true
-      #     tags: ghcr.io/${{ env.REPO }}:${{ github.sha }}
-      #     file: ./Dockerfile
 
   deploy:
     if: true    
@@ -81,4 +60,3 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           images: 'registry.hub.docker.com/budi2020/lin2023:v0.0.3'
-          #images: 'ghcr.io/${{ env.REPO }}:${{ github.sha }}'

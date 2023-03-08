@@ -11,8 +11,6 @@ def load_model():
     global model
     filename = "model.sav"
     model = joblib.load(open(filename, "rb"))
-    print("load_model. ")
-    print(type(model))
 
 @app.route("/", methods=["GET"])
 def info():
@@ -41,4 +39,5 @@ def batch():
 if __name__=="__main__":
     load_model()
     port = 80 # 5000
+    print(F"======== Starting linear regression API on port {port} =========")
     app.run(host="0.0.0.0", port=port, debug=True)

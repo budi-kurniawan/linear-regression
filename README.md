@@ -37,12 +37,12 @@ A Docker image named lin2023 is published to Docker Hub every time the workflow 
 To pull the Docker image, do this:
 ```
 $ docker pull budi2020/lin2023[:tagName]
-$ docker pull budi2020/lin2023:v0.0.2
+$ docker pull budi2020/lin2023:v0.0.3
 ```
 
 To run the Docker image on port 5000, do the following:
 ```
-$ docker run -i -p 5000:5000 -d budi2020/lin2023:v0.0.2
+$ docker run -i -p 5000:5000 -d budi2020/lin2023:v0.0.3
 
 ```
 
@@ -51,3 +51,8 @@ Use curl in Linux:
 - curl -X GET http://ip_address:5000/
 - curl -X POST -H "Content-Type: application/json" -d '{"input":500}' http://ip_address:5000/stream
 - curl -X POST -H "Content-Type: application/json" -d '{"input":[100,200,500]}' http://ip_address:5000/batch
+
+In production:
+- curl -X GET https://lin2023.azurewebsites.net/
+- curl -X POST -H "Content-Type: application/json" -d '{"input":500}' https://lin2023.azurewebsites.net/stream
+- curl -X POST -H "Content-Type: application/json" -d '{"input":[100,200,500]}' https://lin2023.azurewebsites.net/batch
