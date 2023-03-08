@@ -1,5 +1,8 @@
 name: Linear regression package
 
+env:
+  VERSION: v0.0.3
+
 on: [push]
 
 jobs:
@@ -24,20 +27,20 @@ jobs:
       - name: Test with pytest
         run: pytest
 
-      # - name: Build the Docker image
-      #   # run: docker build . --file Dockerfile --tag budi2020/lin2023:$(date +%s)
-      #   run: docker build . --file Dockerfile --tag budi2020/lin2023:v0.0.2
+      - name: Build Docker image and push to Docker Hub
+        # run: docker build . --file Dockerfile --tag budi2020/lin2023:$(date +%s)
+        run: docker build . --file Dockerfile --tag budi2020/lin2023:$VERSION
 
-      # - name: Log in to Docker Hub
-      #   uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-      #   with:
-      #     username: ${{ secrets.DOCKER_USER }}
-      #     password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       
-      # - name: Docker Push
-      #   run: docker push ${{secrets.DOCKER_USER}}/lin2023:v0.0.2
+      - name: Docker Push
+        run: docker push ${{secrets.DOCKER_USER}}/lin2023:$VERSION
 
-      # - name: Set up Docker Buildx
+      # - name: Set up Docker Buildx and Push to ghrc.io
       #   uses: docker/setup-buildx-action@v1
 
       # - name: Log in to GitHub container registry
@@ -77,5 +80,5 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          images: 'registry.hub.docker.com/budi2020/lin2023:v0.0.2'
+          images: 'registry.hub.docker.com/budi2020/lin2023:$VERSION'
           #images: 'ghcr.io/${{ env.REPO }}:${{ github.sha }}'
