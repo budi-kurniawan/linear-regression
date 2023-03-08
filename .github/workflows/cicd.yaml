@@ -18,9 +18,9 @@ jobs:
 
       - name: Set version as variable
         run: |
-          VERSION=$(cat VERSION)
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-
+          VER=$(cat VERSION)
+          echo "VERSION=$VER" >> ${GITHUB_ENV}
+          
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
@@ -58,8 +58,8 @@ jobs:
     steps:
       - name: Set version as variable
         run: |
-          VERSION=$(cat VERSION)
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          VER=$(cat VERSION)
+          echo "VERSION=$VER" >> ${GITHUB_ENV}
 
       - name: Lowercase the repo name
         run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
@@ -72,5 +72,5 @@ jobs:
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           #images: 'registry.hub.docker.com/budi2020/lin2023:v0.0.3'
           #images: 'registry.hub.docker.com/budi2020/lin2023:${{ env.VERSION }}'
-          images: 'registry.hub.docker.com/budi2020/lin2023:${{ VERSION }}'
+          images: 'registry.hub.docker.com/budi2020/lin2023:${{ env.VERSION }}'
 
