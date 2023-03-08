@@ -38,7 +38,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       
       - name: Docker Push
-        run: docker push ${{secrets.DOCKER_USER}}/lin2023:${{VERSION}}
+        run: docker push ${{secrets.DOCKER_USER}}/lin2023:v0.0.3
 
       # - name: Set up Docker Buildx and Push to ghrc.io
       #   uses: docker/setup-buildx-action@v1
