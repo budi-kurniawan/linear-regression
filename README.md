@@ -47,9 +47,9 @@ $ docker run -i -p 80:80 -d budi2020/lin2023:v0.0.3
 
 ## Invoking the API
 Use curl in Linux:
-- curl -X GET http://ip_address:5000/
-- curl -X POST -H "Content-Type: application/json" -d '{"input":500}' http://ip_address:5000/stream
-- curl -X POST -H "Content-Type: application/json" -d '{"input":[100,200,500]}' http://ip_address:5000/batch
+- curl -X GET http://ip_address:port/
+- curl -X POST -H "Content-Type: application/json" -d '{"input":500}' http://ip_address:port/stream
+- curl -X POST -H "Content-Type: application/json" -d '{"input":[100,200,500]}' http://ip_address:port/batch
 
 In production:
 - curl -X GET https://lin2023.azurewebsites.net/
