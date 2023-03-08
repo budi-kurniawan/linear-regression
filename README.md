@@ -42,7 +42,7 @@ $ docker pull budi2020/lin2023:v0.0.3
 
 To run the Docker image on port 5000, do the following:
 ```
-$ docker run -i -p 5000:5000 -d budi2020/lin2023:v0.0.3
+$ docker run -i -p 80:80 -d budi2020/lin2023:v0.0.3
 
 ```
 
