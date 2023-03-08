@@ -9,5 +9,6 @@ RUN pip3 install -r requirements.txt
 
 COPY ./src/lin2023/*.py ./
 COPY ./model.sav ./
+COPY ./VERSION ./
 
 CMD [ "python", "./main.py"]
