@@ -38,7 +38,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       
       - name: Docker Push
-        run: docker push ${{secrets.DOCKER_USER}}/lin2023:v0.0.3
+        run: docker push ${{secrets.DOCKER_USER}}/lin2023:$VERSION
 
       # - name: Set up Docker Buildx and Push to ghrc.io
       #   uses: docker/setup-buildx-action@v1
@@ -80,5 +80,5 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          images: 'registry.hub.docker.com/budi2020/lin2023:$VERSION'
+          images: 'registry.hub.docker.com/budi2020/lin2023:${VERSION}'
           #images: 'ghcr.io/${{ env.REPO }}:${{ github.sha }}'
