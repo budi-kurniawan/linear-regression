@@ -1,10 +1,9 @@
-# Linear Regression System with CI/CD
-A machine learning workflow featuring a linear regression system based on stochastic gradient descent.
-The workflow is based on Github Actions. Upon pushing to the main branch, the following tasks are carried out:
+# Linear Regression System with Github Actions Workflow
+Code-named lin2023, this project features a linear regression system with a CI/CD workflow based on Github Actions. Upon pushing to the main branch, the following tasks are carried out:
 
 - Run the unit tests using PyTest,
 - Create a Docker image and publish it to Docker Hub using image name 'lin2023',
-- Deploy the Docker image to ...
+- Deploy the Docker image to Azure.
 
 ## The Code
 Cloning the code:
@@ -56,3 +55,12 @@ In production:
 - curl -X GET https://lin2023.azurewebsites.net/
 - curl -X POST -H "Content-Type: application/json" -d '{"input":500}' https://lin2023.azurewebsites.net/stream
 - curl -X POST -H "Content-Type: application/json" -d '{"input":[100,200,500]}' https://lin2023.azurewebsites.net/batch
+
+## Known Problems
+The unit tests are currently commented out due to permission problems in Github Actions.
+
+## Ideas for Improvement
+- Write the version number as a text file
+- Write more unit tests catering for more scenarios
+- More error handling in the Flask functions
+- Include the publication to PyPi in the workflow
