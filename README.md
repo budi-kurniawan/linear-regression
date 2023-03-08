@@ -36,12 +36,12 @@ A Docker image named lin2023 is published to Docker Hub every time the workflow 
 To pull the Docker image, do this:
 ```
 $ docker pull budi2020/lin2023[:tagName]
-$ docker pull budi2020/lin2023:v0.0.3
+$ docker pull budi2020/lin2023:v0.0.7
 ```
 
 To run the Docker image on port 5000, do the following:
 ```
-$ docker run -i -p 80:80 -d budi2020/lin2023:v0.0.3
+$ docker run -i -p 80:80 -d budi2020/lin2023:v0.0.7
 
 ```
 
@@ -60,7 +60,6 @@ In production:
 The unit tests are currently commented out due to permission problems in Github Actions.
 
 ## Ideas for Improvement
-- Write the version number as a text file
-- Write more unit tests catering for more scenarios
+- Write more unit tests to cater for more scenarios
 - More error handling in the Flask functions
 - Include the publication to PyPi in the workflow

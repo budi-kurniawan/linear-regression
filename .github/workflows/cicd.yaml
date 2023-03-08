@@ -1,8 +1,5 @@
 name: Linear regression package
 
-# env:
-#   VERSION: v0.0.3
-
 on: [push]
 
 jobs:
@@ -34,7 +31,7 @@ jobs:
         run: pytest
 
       - name: Build Docker image and push to Docker Hub
-        run: docker build . --file Dockerfile --tag budi2020/lin2023:$VERSION
+        run: docker build . --file Dockerfile --tag budi2020/lin2023:v$VERSION
 
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
@@ -43,7 +40,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       
       - name: Docker Push
-        run: docker push ${{secrets.DOCKER_USER}}/lin2023:$VERSION
+        run: docker push ${{secrets.DOCKER_USER}}/lin2023:v$VERSION
 
   deploy:
     if: true    
@@ -73,6 +70,5 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          #images: 'registry.hub.docker.com/budi2020/lin2023:v0.0.3'
-          images: 'registry.hub.docker.com/budi2020/lin2023:${{ env.VERSION }}'
+          images: 'registry.hub.docker.com/budi2020/lin2023:v${{ env.VERSION }}'
 

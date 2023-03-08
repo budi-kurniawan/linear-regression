@@ -21,7 +21,7 @@ def read_version():
 @app.route("/", methods=["GET"])
 def info():
     result = model.predict(100)[0]
-    r = {"status": "OK", "message": f"linear regression version {version}. Model ready, x=100, y={result}"}
+    r = {"status": "OK", "message": f"linear regression v{version}. Model ready, x=100, y={result}"}
     return jsonify(r)
 
 @app.route("/stream", methods=["POST"])
