@@ -56,10 +56,10 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      # - name: Set version as variable
-      #   run: |
-      #     VER=$(cat VERSION)
-      #     echo "VERSION=$VER" >> ${GITHUB_ENV}
+      - name: Set version as variable
+        run: |
+          VER=$(cat VERSION)
+          echo "VERSION=$VER" >> ${GITHUB_ENV}
 
 
       - name: Lowercase the repo name
@@ -71,8 +71,7 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          version=cat VERSION
+          version=$(cat VERSION)
           #images: 'registry.hub.docker.com/budi2020/lin2023:v0.0.3'
-          #images: 'registry.hub.docker.com/budi2020/lin2023:${{ env.VERSION }}'
-          images: 'registry.hub.docker.com/budi2020/lin2023:$version'
+          images: 'registry.hub.docker.com/budi2020/lin2023:${{ env.VERSION }}'
 
